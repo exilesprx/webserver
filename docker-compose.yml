@@ -1,0 +1,28 @@
+services:
+
+  haproxy:
+    build:
+      context: .docker/haproxy
+      dockerfile: Dockerfile
+
+  consul-server:
+    build:
+      context: .docker/consul-server
+      dockerfile: Dockerfile
+    volumes:
+     - ./server.json:/consul/config/server.json:ro
+
+  consul-client:
+    build:
+      context: .docker/consul-client
+      dockerfile: Dockerfile
+    volumes:
+     - ./client.json:/consul/config/client.json:ro
+  
+
+volumes:
+  data:
+
+networks:
+  front-tier: {}
+  back-tier: {}

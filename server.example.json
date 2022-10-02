@@ -1,0 +1,4 @@
+{
+  "node_name": "consul-server",
+  "retry_join": []
+}
